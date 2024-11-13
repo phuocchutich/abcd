@@ -6,7 +6,10 @@
             align-items: center;
             height: 100vh;
             margin: 0;
-            background-image:url(https://i.pinimg.com/736x/49/70/88/497088bf97a3aa1b56cb00b968e69843.jpg);
+            background-size: cover;         /* Cho hình ảnh bao phủ toàn bộ màn hình */
+            background-position: center;    /* Căn giữa hình ảnh */
+            background-repeat: no-repeat;   /* Không lặp lại hình nền */
+            background-image:url(https://loveandspecs.com/wp-content/uploads/2015/03/valentines-day-phone-wallpaper-background-puppy-love.png);
         }
 
         /* Khung chứa */
@@ -16,8 +19,8 @@
             padding: 30px;
             border-radius: 15px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            width: 90%;
-            max-width: 400px;
+            width: 100%;
+            max-width: 500px;
         }
 
         /* Tiêu đề */
@@ -129,20 +132,22 @@ button:hover:after {
 }
         /* Hộp thông báo */
         .alert {
-            margin-top: 20px;
-            padding: 15px;
+            margin-top: 10px;
+            padding: 130px;
             border-radius: 8px;
             display: none;
-            font-size: 0.9em;
-            text-align: center;
+            font-size: 0.8em;
+            
         }
 
         /* Thông báo thành công */
         .alert.success {
-            background-color: #d4edda;
+            background-image: url('https://i.pinimg.com/originals/63/90/3d/63903d9f34f02388fff5d0c7dd6e5085.gif');
             color: #155724;
+             background-size: cover;         /* Cho hình ảnh bao phủ toàn bộ màn hình */
+            background-position: center;    /* Căn giữa hình ảnh */
+            background-repeat: no-repeat;  
         }
-
         /* Thông báo lỗi */
         .alert.error {
             background-color: #f8d7da;

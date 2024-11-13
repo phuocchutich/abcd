@@ -3,14 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Form Gửi Email</title>
+    <title>Phước iu Hòa nhất nhà</title>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
-        <h2>Nhấn vào các button để gửi thông báo</h2>
-        <!-- Các button sẽ gọi hàm sendNotification khi nhấn -->
+        <h2>Số ngày chúng ta bên nhau: <span id="result"></span> <br>Em muốn anh làm gì nè </h2> 
+<script>
+    // Ngày bắt đầu tính
+    const startDate = new Date("2022-04-25");
+    // Ngày hiện tại
+    const currentDate = new Date();
+    
+    // Tính số ngày
+    const differenceInTime = currentDate - startDate;
+    const differenceInDays = Math.floor(differenceInTime / (1000 * 60 * 60 * 24));
+
+    // Hiển thị kết quả
+    document.getElementById("result").innerText = differenceInDays + " ngày";
+</script>        <!-- Các button sẽ gọi hàm sendNotification khi nhấn -->
          <table >
             <tr>
                 <td><button onclick="sendNotification('button1')">🍕Em Đói Rùi</button></td>
@@ -25,71 +37,11 @@
                 <td><button onclick="sendNotification('button6')">🥰Rối Anh Nhờ</button></td>
                 </tr>
          </table>
-        
         <!-- Thông báo sẽ hiển thị tại đây -->
         <div id="alertBox" class="alert" style="display: none;"></div>
     </div>
 <canvas id="cavs" style="position:fixed; z-index:-1;"></canvas>
-
-    <script>
-        // Cấu hình EmailJS
-        (function() {
-            emailjs.init("ru1XIJTXkpe62i_bi");  // Thay "YOUR_USER_ID" bằng ID từ EmailJS của bạn
-        })();
-
-        function sendNotification(buttonID) {
-            var messageContent = "";  // Khởi tạo biến chứa nội dung thông báo
-
-            // Điều chỉnh thông điệp tùy thuộc vào button được nhấn
-            switch(buttonID) {
-                case 'button1':
-                    messageContent = "Hòa đói rồi";  // Nội dung cho button 1
-                    break;
-                case 'button2':
-                    messageContent = "Hòa muốn uống gì đó ";  // Nội dung cho button 2
-                    break;
-                case 'button3':
-                    messageContent = "Hòa muốn đi chơi";  // Nội dung cho button 3
-                    break;
-                    case 'button4':
-                    messageContent = "Hòa muốn gọi";  // Nội dung cho button 3
-                    break;
-                    case 'button5':
-                    messageContent = "Hòa muốn xem phim";  // Nội dung cho button 3
-                    break;
-                    case 'button6':
-                    messageContent = "Hòa Nhớ bạn kìa";  // Nội dung cho button 3
-                    break;
-                default:
-                    messageContent = "Không xác định";  // Thông điệp mặc định nếu không có button nào khớp
-                    break;
-            }
-
-            // Thông tin email
-            var emailParams = {
-                to_email: "phuocdangvan342@outlook.com.vn",  // Địa chỉ email nhận thông báo
-                subject: "Thông báo từ Button " + buttonID,
-                message: "Honey muốn " + messageContent
-            };
-
-            // Gửi email qua EmailJS
-            emailjs.send("service_i0nclqj", "template_69nzdju", emailParams)
-            .then(function(response) {
-               showAlert("Đã gửi thông báo!", "success");
-            }, function(error) {
-               showAlert("Gửi thông báo thất bại, thử lại!", "error");
-               console.error("Lỗi gửi email:", error);
-            });
-        }
-
-        // Hiển thị thông báo thành công hoặc thất bại
-        function showAlert(message, type) {
-            var alertBox = document.getElementById("alertBox");
-            alertBox.innerText = message;
-            alertBox.className = "alert " + (type === "success" ? "success" : "error");
-            alertBox.style.display = "inline-block";  // Hiển thị thông báo
-        }
-    </script>
+    <script src="script.js"></script>
     <script src="total.js"></script>
 </body>
 </html>

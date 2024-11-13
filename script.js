@@ -43,7 +43,7 @@
             .then(function(response) {
                showAlert("Anh đã nhận được yêu cầu rồi nhé!", "success");
             }, function(error) {
-               showAlert("Gửi thông báo thất bại, thử lại!", "error");
+               showAlert("Gửi thông báo thất bại, thử lại!Em nhớ kiểm tra lại kết nối mạng nhé", "error");
                console.error("Lỗi gửi email:", error);
             });
         }

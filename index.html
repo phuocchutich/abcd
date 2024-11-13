@@ -9,40 +9,58 @@
 </head>
 <body>
     <div class="container">
-        <h2>Số ngày chúng ta bên nhau: <span id="result"></span> <br>Em muốn anh làm gì nè </h2> 
-<script>
-    // Ngày bắt đầu tính
-    const startDate = new Date("2022-04-25");
-    // Ngày hiện tại
-    const currentDate = new Date();
-    
-    // Tính số ngày
-    const differenceInTime = currentDate - startDate;
-    const differenceInDays = Math.floor(differenceInTime / (1000 * 60 * 60 * 24));
+        <h2>Số ngày chúng ta bên nhau: <span id="result"></span> <br>Em muốn anh làm gì nè </h2>
+        <script>
+            // Ngày bắt đầu tính
+            const startDate = new Date("2022-04-25");
+            // Ngày hiện tại
+            const currentDate = new Date();
+            
+            // Tính số ngày
+            const differenceInTime = currentDate - startDate;
+            const differenceInDays = Math.floor(differenceInTime / (1000 * 60 * 60 * 24));
 
-    // Hiển thị kết quả
-    document.getElementById("result").innerText = differenceInDays + " ngày";
-</script>        <!-- Các button sẽ gọi hàm sendNotification khi nhấn -->
-         <table >
+            // Hiển thị kết quả
+            document.getElementById("result").innerText = differenceInDays + " ngày";
+            
+            // Kiểm tra kết nối mạng và hiển thị thông báo
+            function checkConnection() {
+                const alertBox = document.getElementById("alertBox");
+                    alertBox.innerText = "Mất kết nối mạng, kiểm tra lại!";
+                alertBox.style.display = "inline-block"; // Hiển thị thông báo
+            }
+
+            // Gọi hàm kiểm tra kết nối khi trang tải xong
+            window.addEventListener('load', checkConnection);
+
+            // Lắng nghe sự kiện thay đổi kết nối
+            window.addEventListener('online', checkConnection);
+            window.addEventListener('offline', checkConnection);
+        </script>
+
+        <!-- Các button sẽ gọi hàm sendNotification khi nhấn -->
+        <table>
             <tr>
                 <td><button onclick="sendNotification('button1')">🍕Em Đói Rùi</button></td>
                 <td><button onclick="sendNotification('button2')">🥤Thèm Trà Sữa Rùi</button></td>
-                </tr>
-                <tr>
+            </tr>
+            <tr>
                 <td><button onclick="sendNotification('button3')">🌏Đi Dạo Hem</button></td>
                 <td><button onclick="sendNotification('button4')">📱Gọi Em Nhé</button></td>
-                </tr>
-                <tr>
+            </tr>
+            <tr>
                 <td><button onclick="sendNotification('button5')">🎬Đi Xem Film Hông </button></td>
                 <td><button onclick="sendNotification('button6')">🥰Rối Anh Nhờ</button></td>
-                </tr>
-         </table>
+            </tr>
+        </table>
+
         <!-- Thông báo sẽ hiển thị tại đây -->
         <div id="alertBox" class="alert" style="display: none;"></div>
     </div>
-<canvas id="cavs" style="position:fixed; z-index:-1;"></canvas>
+
+    <canvas id="cavs" style="position:fixed; z-index:-1;"></canvas>
+
     <script src="script.js"></script>
     <script src="total.js"></script>
 </body>
 </html>
-

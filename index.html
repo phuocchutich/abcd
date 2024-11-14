@@ -22,44 +22,81 @@
 
             // Hiển thị kết quả
             document.getElementById("result").innerText = differenceInDays + " ngày";
-            
-            // Kiểm tra kết nối mạng và hiển thị thông báo
-            function checkConnection() {
-                const alertBox = document.getElementById("alertBox");
-                    alertBox.innerText = "Mất kết nối mạng, kiểm tra lại!";
-                alertBox.style.display = "inline-block"; // Hiển thị thông báo
-            }
-
-            // Gọi hàm kiểm tra kết nối khi trang tải xong
-            window.addEventListener('load', checkConnection);
-
-            // Lắng nghe sự kiện thay đổi kết nối
-            window.addEventListener('online', checkConnection);
-            window.addEventListener('offline', checkConnection);
         </script>
 
-        <!-- Các button sẽ gọi hàm sendNotification khi nhấn -->
+        <!-- Các button sẽ gọi hàm openCustomPrompt cho Button 1 và Button 2, các button còn lại sẽ tự động gửi thông báo -->
         <table>
             <tr>
-                <td><button onclick="sendNotification('button1')">🍕Em Đói Rùi</button></td>
-                <td><button onclick="sendNotification('button2')">🥤Thèm Trà Sữa Rùi</button></td>
+                <td><button class="button1" onclick="openCustomPrompt('button1')">🍕Em Đói Rùi</button></td>
+                <td><button class="button1" onclick="openCustomPrompt('button2')">🥤Thèm Trà Sữa Rùi</button></td>
             </tr>
             <tr>
-                <td><button onclick="sendNotification('button3')">🌏Đi Dạo Hem</button></td>
-                <td><button onclick="sendNotification('button4')">📱Gọi Em Nhé</button></td>
+                <td><button class="button1" onclick="sendNotification('button3')">🌏Đi Dạo Hem</button></td>
+                <td><button class="button1" onclick="sendNotification('button4')">📱Gọi Em Nhé</button></td>
             </tr>
             <tr>
-                <td><button onclick="sendNotification('button5')">🎬Đi Xem Film Hông </button></td>
-                <td><button onclick="sendNotification('button6')">🥰Rối Anh Nhờ</button></td>
+                <td><button class="button1" onclick="sendNotification('button5')">🎬Đi Xem Film Hông </button></td>
+                <td><button class="button1" onclick="sendNotification('button6')">🥰Rối Anh Nhờ</button></td>
             </tr>
         </table>
+
+        <!-- Modal for entering suggestions -->
+       <div id="myModal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeCustomPrompt()">&times;</span>
+                <p>Em có gợi ý gì không?</p>
+                <input type="text" id="suggestionInput"><br />
+                <br /><br />
+                <div class="button-container">
+                    <a onclick="submitSuggestion()" class="button button--piyo">
+                        <div class="button__wrapper">
+                            <span class="button__text">Em thích ăn này ạ </span>
+                        </div>
+                        <div class="characterBox">
+                            <div class="character wakeup">
+                                <div class="character__face"></div>
+                            </div>
+                            <div class="character wakeup">
+                                <div class="character__face"></div>
+                            </div>
+                            <div class="character">
+                                <div class="character__face"></div>
+                            </div>
+                        </div>
+                    </a>
+                    <a onclick="sendHelpRequest()" class="button button--pen">
+                        <div class="button__wrapper">
+                            <span class="button__text">Em hông biết anh đoán thử đi </span>
+                        </div>
+                        <div class="characterBox">
+                            <div class="character wakeup">
+                                <div class="character__face"></div>
+                                <div class="charactor__face2"></div>
+                            </div>
+                            <div class="character wakeup">
+                                <div class="character__face"></div>
+                                <div class="charactor__face2"></div>
+                            </div>
+                            <div class="character">
+                                <div class="character__face"></div>
+                                <div class="charactor__face2"></div>
+                            </div>
+                        </div>
+                    </a>
+
+                </div>
+
+
+
+
+            </div>
+
+        </div>
 
         <!-- Thông báo sẽ hiển thị tại đây -->
         <div id="alertBox" class="alert" style="display: none;"></div>
     </div>
-
     <canvas id="cavs" style="position:fixed; z-index:-1;"></canvas>
-
     <script src="script.js"></script>
     <script src="total.js"></script>
 </body>

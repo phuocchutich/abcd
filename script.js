@@ -1,58 +1,97 @@
- // Cấu hình EmailJS
-        (function() {
-            emailjs.init("ru1XIJTXkpe62i_bi");  // Thay "YOUR_USER_ID" bằng ID từ EmailJS của bạn
-        })();
+(function() {
+  emailjs.init("ru1XIJTXkpe62i_bia");
+})();
 
-        function sendNotification(buttonID) {
-            var messageContent = "";  // Khởi tạo biến chứa nội dung thông báo
+let currentButtonID = '';
 
-            // Điều chỉnh thông điệp tùy thuộc vào button được nhấn
-            switch(buttonID) {
-                case 'button1':
-                    messageContent = "Hòa đói rồi";  // Nội dung cho button 1
-                    break;
-                case 'button2':
-                    messageContent = "Hòa muốn uống gì đó ";  // Nội dung cho button 2
-                    break;
-                case 'button3':
-                    messageContent = "Hòa muốn đi chơi";  // Nội dung cho button 3
-                    break;
-                    case 'button4':
-                    messageContent = "Hòa muốn gọi";  // Nội dung cho button 3
-                    break;
-                    case 'button5':
-                    messageContent = "Hòa muốn xem phim";  // Nội dung cho button 3
-                    break;
-                    case 'button6':
-                    messageContent = "Hòa nhớ bạn kìa";  // Nội dung cho button 3
-                    break;
-                default:
-                    messageContent = "Không xác định";  // Thông điệp mặc định nếu không có button nào khớp
-                    break;
-            }
+function openCustomPrompt(buttonID) {
+  // Chỉ mở modal cho Button 1 và Button 2
+  if (buttonID === 'button1' || buttonID === 'button2') {
+    currentButtonID = buttonID;
+    document.getElementById('myModal').style.display = 'block';
+  } else {
+    sendNotification(buttonID);  // Tự động gửi thông báo cho các nút khác
+  }
+}
 
-            // Thông tin email
-            var emailParams = {
-                to_email: "phuocdangvan342@outlook.com.vn",  // Địa chỉ email nhận thông báo
-                subject: "Thông báo từ Button " + buttonID,
-                message: "Honey muốn " + messageContent
-            };
+function closeCustomPrompt() {
+  document.getElementById('myModal').style.display = 'none';
+}
 
-            // Gửi email qua EmailJS
-            emailjs.send("service_i0nclqj", "template_69nzdju", emailParams)
-            .then(function(response) {
-               showAlert("Anh đã nhận được yêu cầu rồi nhé!", "success");
-            }, function(error) {
-               showAlert("Gửi thông báo thất bại, thử lại!Em nhớ kiểm tra lại kết nối mạng nhé", "error");
-               console.error("Lỗi gửi email:", error);
-            });
-        }
+function submitSuggestion() {
+  const suggestion = document.getElementById('suggestionInput').value;
+  sendNotification(currentButtonID, suggestion);
+  closeCustomPrompt();
+}
 
-        // Hiển thị thông báo thành công hoặc thất bại
-        function showAlert(message, type) {
-            var alertBox = document.getElementById("alertBox");
-            alertBox.innerText = message;
-           
-            alertBox.className = "alert" + (type === "success" ? "success" : "error");
-            alertBox.style.display = "inline-block";  // Hiển thị thông báo
-        }
+function sendHelpRequest() {
+  sendNotification("helpButton", "Em không biết");
+  closeCustomPrompt();
+}
+
+function sendNotification(buttonID, suggestion = "") {
+  let messageContent = "";
+
+  switch (buttonID) {
+    case 'button1': 
+      messageContent = "Em đói rồi!"; 
+      if (suggestion) { 
+        messageContent += ` - Gợi ý: <i>${suggestion}</i>`; 
+      } 
+      break;
+    case 'button2': 
+      messageContent = "Em muốn uống gì đó."; 
+      if (suggestion) { 
+        messageContent += ` - Gợi ý: <i>${suggestion}</i>`; 
+      } 
+      break;
+    case 'button3': messageContent = "Hòa muốn đi chơi"; break;
+    case 'button4': messageContent = "Hòa muốn gọi"; break;
+    case 'button5': messageContent = "Hòa muốn xem phim"; break;
+    case 'button6': messageContent = "Hòa nhớ bạn kìa"; break;
+    case 'helpButton': 
+    case 'button1': 
+      messageContent = "Em đói rồi! Em không biết."; 
+      if (suggestion) { 
+        messageContent += ` - Gợi ý: <i>${suggestion}</i>`; 
+      } 
+      break;
+    case 'button2': 
+      messageContent = "Em muốn uống gì đó! Em không biết."; 
+      if (suggestion) { 
+        messageContent += ` - Gợi ý: <i>${suggestion}</i>`; 
+      } 
+      break;
+    default: 
+      messageContent = "Không xác định"; 
+      break;
+  }
+
+  const emailParams = {
+    to_email: "phuocdangvan342@outlook.com.vn",
+    subject: "Thông báo từ Button " + buttonID,
+    message: "Honey muốn " + messageContent
+  };
+
+  emailjs.send("service_i0nclqj", "template_69nzdju", emailParams)
+    .then(function(response) {
+      showAlert("Anh đã nhận được yêu cầu rồi nhé!", "success");
+    }, function(error) {
+      showAlert("Gửi thông báo thất bại, thử lại! Em nhớ kiểm tra lại kết nối mạng nhé", "error");
+      console.error("Lỗi gửi email:", error);
+    });
+}
+
+function showAlert(message, type) {
+  const alertBox = document.getElementById("alertBox");
+  alertBox.innerText = message;
+  alertBox.className = "alert " + (type === "success" ? "alert-success" : "alert-error");
+  alertBox.style.display = "block";
+  alertBox.style.opacity = 1;
+  setTimeout(() => {
+    alertBox.style.opacity = 0;
+    setTimeout(() => {
+      alertBox.style.display = "none";
+    }, 500);
+  }, 3000);
+}

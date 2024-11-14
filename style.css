@@ -1,14 +1,26 @@
 /* Tùy chỉnh nền */
+html, body {
+    height: 100%;
+    overflow: hidden;
+}
 body {
-     font-family: 'Fredoka One', cursive;
+    
+    font-family: 'Fredoka One', cursive;
+    margin: 0;
+    padding: 0;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 0;
-    background-size: cover;         /* Cho hình ảnh bao phủ toàn bộ màn hình */
-    background-position: center;    /* Căn giữa hình ảnh */
-    background-repeat: no-repeat;   /* Không lặp lại hình nền */
-    background-image:url(https://loveandspecs.com/wp-content/uploads/2015/03/valentines-day-phone-wallpaper-background-puppy-love.png);
+    height: 100vh; /* Chiều cao của body bằng chiều cao của viewport */
+    background-size: cover; /* Hình nền bao phủ toàn bộ màn hình */
+    background-position: center; /* Căn giữa hình nền */
+    background-repeat: no-repeat; /* Không lặp lại hình nền */
+    background-image: url(https://loveandspecs.com/wp-content/uploads/2015/03/valentines-day-phone-wallpaper-background-puppy-love.png);
+    background-attachment: fixed; /* Giữ hình nền cố định khi cuộn trang */
+    overflow: hidden; /* Ngừng cuộn trang, không thể kéo xuống hoặc di chuyển */
+    height: 100%; /* Đảm bảo body luôn có chiều cao đầy đủ */
+
+
 }
 
 /* Khung chứa */
@@ -19,7 +31,14 @@ body {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     width: 100%;
     max-width: 500px;
+    position: absolute; /* Đặt vị trí cố định */
+    top: 50%; /* Căn giữa theo chiều dọc */
+    left: 50%; /* Căn giữa theo chiều ngang */
+    transform: translate(-50%, -50%); /* Dịch chuyển lại để căn giữa chính xác */
 }
+
+
+
 
 /* Tiêu đề */
 h2 {
@@ -121,11 +140,14 @@ h2 {
     margin: 10% auto;
     padding: 20px;
     border: 1px solid #888;
-    width: 80%;
+    width: 70%;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
     border-radius: 10px;
     animation: fadeIn 0.4s;
-    width: 400px;
+    
+    justify-content: center; /* Căn giữa nội dung theo chiều ngang */
+   
+    position: fixed; /* Đảm bảo modal luôn cố định */
 }
 
 @keyframes fadeIn {
@@ -183,7 +205,7 @@ input[type="text"] {
         .button--piyo,
         .button--hoo,
         .button--pen {
-            min-width: 350px; /* Chiều rộng tối thiểu để nút không quá nhỏ */
+            min-width: 200px; /* Chiều rộng tối thiểu để nút không quá nhỏ */
             display: flex;
             align-items: center;
             justify-content: center;

@@ -1,10 +1,7 @@
 /* Tùy chỉnh nền */
-html, body {
-    height: 100%;
-    overflow: hidden;
-}
+
+/* Cấu hình body */
 body {
-    
     font-family: 'Fredoka One', cursive;
     margin: 0;
     padding: 0;
@@ -18,9 +15,6 @@ body {
     background-image: url(https://loveandspecs.com/wp-content/uploads/2015/03/valentines-day-phone-wallpaper-background-puppy-love.png);
     background-attachment: fixed; /* Giữ hình nền cố định khi cuộn trang */
     overflow: hidden; /* Ngừng cuộn trang, không thể kéo xuống hoặc di chuyển */
-    height: 100%; /* Đảm bảo body luôn có chiều cao đầy đủ */
-
-
 }
 
 /* Khung chứa */
@@ -35,7 +29,17 @@ body {
     top: 50%; /* Căn giữa theo chiều dọc */
     left: 50%; /* Căn giữa theo chiều ngang */
     transform: translate(-50%, -50%); /* Dịch chuyển lại để căn giữa chính xác */
+    box-sizing: border-box;
+    /* Giới hạn chiều cao của khung, để đảm bảo nội dung không bị tràn ra ngoài */
+    height: 100%;
 }
+
+/* Thiết lập cho các phần tử trong khung */
+.container p {
+    margin: 0; /* Xóa khoảng cách ngoài */
+    padding: 10px 0; /* Khoảng cách giữa các đoạn văn */
+}
+
 
 
 
@@ -65,7 +69,25 @@ h2 {
     -webkit-user-select: none;
     touch-action: manipulation;
 }
-
+.button-container1 {
+    display: flex;
+    flex-direction: column; /* Sắp xếp các hàng nút theo chiều dọc */
+    justify-content: center; /* Căn giữa các hàng theo chiều dọc */
+    align-items: center; /* Căn giữa các hàng theo chiều ngang */
+   
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    justify-content: center; /* Căn giữa các hàng nút theo chiều dọc */
+   
+}
+.button-row {
+    display: flex; /* Sử dụng Flexbox để căn các nút trong mỗi hàng */
+    justify-content: center; /* Căn giữa các nút theo chiều ngang */
+    margin: 10px 0; /* Khoảng cách giữa các hàng */
+       gap: 20px; /* Khoảng cách giữa các nút trong cùng một hàng */
+   
+}
 .button1:after {
     --slice-0: inset(50% 50% 50% 50%);
     --slice-1: inset(80% -6px 0 0);
@@ -124,7 +146,9 @@ h2 {
 }
 
 .modal {
-    display: none;
+     display: none; /* Hiển thị modal khi được kích hoạt */
+    justify-content: center; /* Căn giữa theo chiều ngang */
+    align-items: center; /* Căn giữa theo chiều dọc */
     position: fixed;
     z-index: 1;
     left: 0;
@@ -132,7 +156,7 @@ h2 {
     width: 100%;
     height: 100%;
     overflow: auto;
-    background-color: rgba(0, 0, 0, 0.4);
+    background-color: rgba(0, 0, 0, 0.4); /* Nền mờ */
 }
 
 .modal-content {
@@ -205,7 +229,7 @@ input[type="text"] {
         .button--piyo,
         .button--hoo,
         .button--pen {
-            min-width: 200px; /* Chiều rộng tối thiểu để nút không quá nhỏ */
+            min-width: 250px; /* Chiều rộng tối thiểu để nút không quá nhỏ */
             display: flex;
             align-items: center;
             justify-content: center;

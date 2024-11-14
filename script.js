@@ -1,6 +1,6 @@
 // Khởi tạo EmailJS với Service ID của bạn
 (function() {
-  emailjs.init("mhhjWMt4JKT_QMCeKa"); // Thay Service ID của bạn vào đây
+  emailjs.init("mhhjWMt4JKT_QMCeKaaas"); // Thay Service ID của bạn vào đây
 })();
 
 let currentButtonID = ''; // Biến lưu trạng thái của button được nhấn
@@ -46,7 +46,7 @@ function sendNotification(buttonID, suggestion = "") {
       }
       break;
     case 'button2': 
-      messageContent = "Em muốn uống gì đó.";
+      messageContent = "Em muốn uống gì đó!";
       if (suggestion) { 
         messageContent += ` - Gợi ý: ${suggestion}`;    
       }
@@ -66,9 +66,9 @@ function sendNotification(buttonID, suggestion = "") {
     case 'helpButton': 
       // Thông báo tùy chỉnh cho helpButton
       if (currentButtonID === "button1") {
-        messageContent = "Em đói rồi! Em không biết."; 
+        messageContent = "Em đói rồi! Mà em ko biết ăn gì cả"; 
       } else if (currentButtonID === "button2") {
-        messageContent = "Em muốn uống gì đó! Em không biết."; 
+        messageContent = "Em muốn uống gì đó! mà em hông biết nên uống gì cả"; 
       }
       break;
     default: 
@@ -94,7 +94,7 @@ function sendNotification(buttonID, suggestion = "") {
 }
 
 // Hàm hiển thị thông báo trên giao diện
-function showAlert(message, type) {
+function showAlert(message, type,) {
   const alertBox = document.getElementById("alertBox"); // Lấy phần tử thông báo
   alertBox.innerText = message; // Hiển thị thông điệp
   alertBox.className = "alert " + (type === "success" ? "alert-success" : "alert-error"); // Xử lý kiểu thông báo

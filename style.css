@@ -137,13 +137,8 @@ h2 {
 }
 
 /* Hộp thông báo */
-.alert {
-    margin-top: 10px;
-    padding: 130px;
-    border-radius: 8px;
-    display: none;
-    font-size: 0.8em;
-}
+
+
 
 .modal {
      display: none; /* Hiển thị modal khi được kích hoạt */
@@ -218,7 +213,8 @@ input[type="text"] {
     background-color: #f8d7da;
     color: #721c24;
 }
-        .button-container {
+       
+.button-container {
             transform-origin: center; /* Giữ tỷ lệ kích thước trung tâm */
             transform-origin: top left; /* Chỉnh sửa vị trí điểm gốc */
             display: flex;

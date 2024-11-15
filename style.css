@@ -141,7 +141,7 @@ h2 {
 
 
 .modal {
-     display: none; /* Hiển thị modal khi được kích hoạt */
+    display: none; /* Ẩn mặc định */
     justify-content: center; /* Căn giữa theo chiều ngang */
     align-items: center; /* Căn giữa theo chiều dọc */
     position: fixed;
@@ -150,24 +150,26 @@ h2 {
     top: 0;
     width: 100%;
     height: 100%;
-    overflow: auto;
     background-color: rgba(0, 0, 0, 0.4); /* Nền mờ */
 }
 
 .modal-content {
     background-color: #fff;
-    margin: 10% auto;
     padding: 20px;
     border: 1px solid #888;
     width: 70%;
+    max-width: 500px; /* Giới hạn chiều rộng */
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
     border-radius: 10px;
     animation: fadeIn 0.4s;
     
-    justify-content: center; /* Căn giữa nội dung theo chiều ngang */
-   
-    position: fixed; /* Đảm bảo modal luôn cố định */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Căn giữa tuyệt đối */
+    text-align: center; /* Căn giữa nội dung */
 }
+
 
 @keyframes fadeIn {
     from { opacity: 0; }
@@ -220,6 +222,7 @@ input[type="text"] {
             display: flex;
             gap: 40px; /* khoảng cách giữa các nút */
             transform: scale(0.5);
+            
         }
 
         .button--piyo,
@@ -241,9 +244,6 @@ input[type="text"] {
             background: var(--main_color);
             font-family: 'Fredoka One', cursive;
         }
-
-
-
         .characterBox, .button__text, .character {
             transform-origin: top left; /* Chỉnh sửa vị trí điểm gốc */
         }

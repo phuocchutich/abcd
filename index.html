@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Phước iu Hòa nhất nhà</title>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="sty.css">
 </head>
 <body>
     <div class="container">
@@ -27,17 +27,21 @@
         <!-- Các button sẽ gọi hàm openCustomPrompt cho Button 1 và Button 2, các button còn lại sẽ tự động gửi thông báo -->
      <div class="button-container1">
     <div class="button-row">
-        <button class="button1" onclick="openCustomPrompt('button1')">🍕Em Đói Rùi</button>
-        <button class="button1" onclick="openCustomPrompt('button2')">🥤Thèm Trà Sữa Rùi</button>
+        <button class="button1" onclick="openCustomPrompt('button1')">🍕 Em Đói Rùi</button>
+        <button class="button1" onclick="openCustomPrompt('button2')">🥤 Thèm Trà Sữa Rùi</button>
     </div>
     <div class="button-row">
-        <button class="button1" onclick="sendNotification('button3')">🌏Đi Dạo Hem</button>
-        <button class="button1" onclick="sendNotification('button4')">📱Gọi Em Nhé</button>
+        <button class="button1" onclick="sendNotification('button3')">🌏 Đi Dạo Hem</button>
+        <button class="button1" onclick="sendNotification('button4')">📱 Gọi Em Nhé</button>
     </div>
     <div class="button-row">
-        <button class="button1" onclick="sendNotification('button5')">🎬Đi Xem Film Hông</button>
-        <button class="button1" onclick="sendNotification('button6')">🥰Rối Anh Nhờ</button>
+        <button class="button1" onclick="sendNotification('button5')">🎬 Đi Xem Film Hông</button>
+        <button class="button1" onclick="sendNotification('button6')">🥰 Rối Anh Nhờ</button>
     </div>
+  <div class="button-row">
+    <button class="button1" onclick="sendNotification('button7')">📖 Kể Chuyện Cho Em Nghe</button>
+    <button class="button1" onclick="sendNotification('button8')">📷 Mình Chụp Hình Chung Nha</button>
+</div>
 </div>
 
 
@@ -98,7 +102,7 @@
         <div id="alertBox" class="alert" style="display: none;"></div>
     </div>
     <canvas id="cavs" style="position:fixed; z-index:-1;"></canvas>
-    <script src="script.js"></script>
+    <script src="scri.js"></script>
     <script src="total.js"></script>
 </body>
 </html>

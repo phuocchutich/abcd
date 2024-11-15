@@ -2,9 +2,7 @@
 (function() {
   emailjs.init("mhhjWMt4JKT_QMCeKaaaaaa"); // Thay Service ID của bạn vào đây
 })();
-
 let currentButtonID = ''; // Biến lưu trạng thái của button được nhấn
-
 // Mở modal khi nhấn vào Button 1 hoặc Button 2
 function openCustomPrompt(buttonID) {
   if (buttonID === 'button1' || buttonID === 'button2') {
@@ -14,29 +12,24 @@ function openCustomPrompt(buttonID) {
     sendNotification(buttonID);  // Gửi thông báo tự động cho các button khác
   }
 }
-
 // Đóng modal khi người dùng hoàn thành
 function closeCustomPrompt() {
   document.getElementById('myModal').style.display = 'none'; // Ẩn modal
 }
-
 // Hàm gửi gợi ý khi người dùng nhập vào
 function submitSuggestion() {
   const suggestion = document.getElementById('suggestionInput').value; // Lấy gợi ý từ input
   sendNotification(currentButtonID, suggestion); // Gửi thông báo với gợi ý
   closeCustomPrompt(); // Đóng modal
 }
-
 // Hàm gửi yêu cầu giúp đỡ khi nhấn vào helpButton
 function sendHelpRequest() {
   sendNotification("helpButton"); // Gửi thông báo cho helpButton
   closeCustomPrompt(); // Đóng modal
 }
-
 // Hàm gửi thông báo qua EmailJS
 function sendNotification(buttonID, suggestion = "") {
   let messageContent = "";
-
   // Xác định thông báo dựa trên ID của nút
   switch (buttonID) {
     case 'button1': 
@@ -81,24 +74,21 @@ function sendNotification(buttonID, suggestion = "") {
       messageContent = "Không xác định"; 
       break;
   }
-
   // Thiết lập các tham số email
   const emailParams = {
     to_email: "phuocdangvan342@outlook.com.vn",  // Địa chỉ email nhận thông báo
     subject: "Thông báo từ Button " + buttonID,
     message: "Honey muốn " + messageContent
   };
-
   // Gửi thông báo qua EmailJS
   emailjs.send("service_m13uhin", "template_xzyam56", emailParams)
     .then(function(response) {
-      showAlert("Anh đã nhận được yêu cầu rồi nhé!", "success"); // Thông báo thành công
+      showAlert("Anh đã nhận được rồi nè🥰🥰🥰!", "success"); // Thông báo thành công
     }, function(error) {
-      showAlert("Gửi thông báo thất bại, thử lại! Em nhớ kiểm tra lại kết nối mạng nhé", "error"); // Thông báo lỗi
+      showAlert("Anh chưa nhận được! Em nhớ kiểm tra lại kết nối mạng nhé 🛑🛑🛑", "error"); // Thông báo lỗi
       console.error("Lỗi gửi email:", error);
     });
 }
-
 // Hàm hiển thị thông báo trên giao diện
 function showAlert(message, type,) {
   const alertBox = document.getElementById("alertBox"); // Lấy phần tử thông báo

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Phước iu Hòa nhất nhà</title>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-    <link rel="stylesheet" href="sty.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
@@ -19,11 +19,9 @@
             // Tính số ngày
             const differenceInTime = currentDate - startDate;
             const differenceInDays = Math.floor(differenceInTime / (1000 * 60 * 60 * 24));
-
             // Hiển thị kết quả
             document.getElementById("result").innerText = differenceInDays + " ngày";
         </script>
-
         <!-- Các button sẽ gọi hàm openCustomPrompt cho Button 1 và Button 2, các button còn lại sẽ tự động gửi thông báo -->
      <div class="button-container1">
     <div class="button-row">
@@ -43,8 +41,6 @@
     <button class="button1" onclick="sendNotification('button8')">📷 Mình Chụp Hình Chung Nha</button>
 </div>
 </div>
-
-
         <!-- Modal for entering suggestions -->
        <div id="myModal" class="modal">
             <div class="modal-content">
@@ -88,21 +84,14 @@
                             </div>
                         </div>
                     </a>
-
                 </div>
-
-
-
-
             </div>
-
         </div>
-
         <!-- Thông báo sẽ hiển thị tại đây -->
         <div id="alertBox" class="alert" style="display: none;"></div>
     </div>
     <canvas id="cavs" style="position:fixed; z-index:-1;"></canvas>
-    <script src="scri.js"></script>
+    <script src="script.js"></script>
     <script src="total.js"></script>
 </body>
 </html>

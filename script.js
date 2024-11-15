@@ -1,6 +1,6 @@
 // Khởi tạo EmailJS với Service ID của bạn
 (function() {
-  emailjs.init("mhhjWMt4JKT_QMCeKaaaaaa"); // Thay Service ID của bạn vào đây
+  emailjs.init("mhhjWMt4JKT_QMCeK"); // Thay Service ID của bạn vào đây
 })();
 let currentButtonID = ''; // Biến lưu trạng thái của button được nhấn
 // Mở modal khi nhấn vào Button 1 hoặc Button 2
@@ -33,13 +33,13 @@ function sendNotification(buttonID, suggestion = "") {
   // Xác định thông báo dựa trên ID của nút
   switch (buttonID) {
     case 'button1': 
-      messageContent = "Em đói rồi!";
+      messageContent = "em đói rồi!";
       if (suggestion) { 
         messageContent += ` - Gợi ý: ${suggestion}`; 
       }
       break;
     case 'button2': 
-      messageContent = "Em muốn uống gì đó!";
+      messageContent = "em muốn uống gì đó!";
       if (suggestion) { 
         messageContent += ` - Gợi ý: ${suggestion}`;    
       }
@@ -48,26 +48,26 @@ function sendNotification(buttonID, suggestion = "") {
       messageContent = "Honey muốn đi chơi"; 
       break;
     case 'button4': 
-      messageContent = "Hòa muốn gọi"; 
+      messageContent = "honey muốn gọi"; 
       break;
     case 'button5': 
-      messageContent = "Hòa muốn xem phim"; 
+      messageContent = "honey muốn xem phim"; 
       break;
     case 'button6': 
-      messageContent = "Hòa nhớ bạn kìa"; 
+      messageContent = "honey nhớ bạn kìa"; 
       break;
        case 'button7': 
-      messageContent = "Kể chuyện Hòa nghe"; 
+      messageContent = "kể chuyện honey nghe"; 
       break;
        case 'button8': 
-      messageContent = "Mình chụp hình chung nha"; 
+      messageContent = "mình chụp hình chung nha"; 
       break;
     case 'helpButton': 
       // Thông báo tùy chỉnh cho helpButton
       if (currentButtonID === "button1") {
-        messageContent = "Em đói rồi! Mà em ko biết ăn gì cả"; 
+        messageContent = "em đói rồi! Mà em ko biết ăn gì cả"; 
       } else if (currentButtonID === "button2") {
-        messageContent = "Em muốn uống gì đó! mà em hông biết nên uống gì cả"; 
+        messageContent = "em muốn uống gì đó! Mà em hông biết nên uống gì cả"; 
       }
       break;
     default: 
@@ -78,14 +78,14 @@ function sendNotification(buttonID, suggestion = "") {
   const emailParams = {
     to_email: "phuocdangvan342@outlook.com.vn",  // Địa chỉ email nhận thông báo
     subject: "Thông báo từ Button " + buttonID,
-    message: "Honey muốn " + messageContent
+    message: "Anh ơi " + messageContent
   };
   // Gửi thông báo qua EmailJS
   emailjs.send("service_m13uhin", "template_xzyam56", emailParams)
     .then(function(response) {
       showAlert("Anh đã nhận được rồi nè🥰🥰🥰!", "success"); // Thông báo thành công
     }, function(error) {
-      showAlert("Anh chưa nhận được! Em nhớ kiểm tra lại kết nối mạng nhé 🛑🛑🛑", "error"); // Thông báo lỗi
+      showAlert("Anh chưa nhận được! Em nhớ kiểm tra lại kết nối mạng nhé 🛑🛑", "error"); // Thông báo lỗi
       console.error("Lỗi gửi email:", error);
     });
 }
